@@ -71,8 +71,6 @@ campus\_issue\_platform/
 
 │  │  │  │  ├─ health.py
 
-│  │  │  │  ├─ auth.py
-
 │  │  │  │  ├─ events.py
 
 │  │  │  │  ├─ issues.py
@@ -120,8 +118,6 @@ campus\_issue\_platform/
 │  │  │  ├─ summary\_service.py
 
 │  │  │  ├─ comment\_service.py
-
-│  │  │  └─ auth\_service.py
 
 │  │  │
 
@@ -207,10 +203,6 @@ campus\_issue\_platform/
 
 │        │  ├─ IssueDetailPage.tsx
 
-│        │  ├─ LoginPage.tsx
-
-│        │  └─ ProfilePage.tsx
-
 │        │
 
 │        ├─ components/
@@ -264,8 +256,6 @@ campus\_issue\_platform/
 │        │  ├─ issues.ts
 
 │        │  ├─ comments.ts
-
-│        │  └─ auth.ts
 
 │        │
 
@@ -460,8 +450,4 @@ The project structure is separated by stage, so each file or folder has one clea
 &#x20;Test files for both backend and frontend.
 
 &#x20;Used to check whether APIs, timeline logic, and UI components work correctly.
-
-
-
-
 
