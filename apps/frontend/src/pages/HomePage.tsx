@@ -83,7 +83,7 @@ const pseudoEvents: EventPreview[] = [
 const pseudoComments: CommentPreview[] = [
   {
     id: "comment-001",
-    author: "Anonymous Student",
+    author: "EEE",
     content: "I think the dorm rule update needs a clearer explanation.",
     relatedIssue: "Dorm Management Policy Update",
   },
