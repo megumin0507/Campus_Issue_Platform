@@ -178,7 +178,7 @@ const styles: Record<string, React.CSSProperties> = {
     backgroundColor: "#f3f4f6",
     padding: "24px",
     boxSizing: "border-box",
-    fontFamily: "Arial, Helvetica, sans-serif",
+    fontFamily: "Arial, Helvetica, sans-serif, Noto Serif TC",
   },
 
   tab: {
@@ -244,6 +244,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "24px",
     fontWeight: 700,
     backgroundColor: "#f9fafb",
+    fontFamily: "Noto Serif TC",
   },
 
   commentList: {
