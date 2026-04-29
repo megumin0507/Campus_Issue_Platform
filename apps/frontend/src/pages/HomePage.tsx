@@ -68,7 +68,7 @@ const pseudoEvents: EventPreview[] = [
   },
   {
     id: "event-004",
-    title: "[Meeting] Counseling committee meeting record",
+    title: "[Meeting] 國立臺灣大學校務發展規劃委員會校園規劃小組 114 學年度第 6 次委員會會議紀錄",
     summary:
       "AI summary placeholder: The record includes several student-related policy updates and administrative decisions.",
   },
@@ -83,21 +83,21 @@ const pseudoEvents: EventPreview[] = [
 const pseudoComments: CommentPreview[] = [
   {
     id: "comment-001",
-    author: "EEE",
-    content: "I think the dorm rule update needs a clearer explanation.",
-    relatedIssue: "Dorm Management Policy Update",
+    author: "生工系學生",
+    content: "最近宿舍圍牆施工，大量Ubike站點遭拆除，產生許多不便，請校方規劃臨時站點解決同學們需求",
+    relatedIssue: "宿舍周邊空間規劃",
   },
   {
     id: "comment-002",
-    author: "Student A",
-    content: "It would be nice if the platform can show the full timeline.",
-    relatedIssue: "Student Club Regulation Revision",
+    author: "exchage student",
+    content: "there is few vegetarian choice in campus , NTU should creat a environment to support student's choice to have sustainabile action.",
+    relatedIssue: "should be more environmental freiendly meal choice at campus",
   },
   {
     id: "comment-003",
-    author: "Student B",
-    content: "I only heard about this issue from friends, so a summary helps.",
-    relatedIssue: "Campus Counseling Resource Expansion",
+    author: "電機系同學",
+    content: "覺得晚上自習肚子餓時，販賣機選項不夠多，且希望有更多果汁類選項",
+    relatedIssue: "系所自動販賣機提供商品",
   },
 ];
 
