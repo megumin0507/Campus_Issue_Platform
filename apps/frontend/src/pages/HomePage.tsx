@@ -22,18 +22,18 @@ type CommentPreview = {
 const pseudoIssues: IssuePreview[] = [
   {
     id: "issue-001",
-    title: "Dorm Management Policy Update",
-    description: "Recent discussion about dormitory rules and student feedback.",
+    title: "台大校園突現便衣執法人員無預警抓人",
+    description: "學生會譴責非法盤查、要求移民署說明程序與現況",
   },
   {
     id: "issue-002",
-    title: "Student Club Regulation Revision",
-    description: "Updates about student organization and club management rules.",
+    title: "進階英文抵免 疫情因應措施",
+    description: "應屆畢業生或延畢生可選擇報名今年 8/22（日）的外教中心自訂測驗，或暑修進階英文一、二，通過即可順利畢業",
   },
   {
     id: "issue-003",
-    title: "Campus Counseling Resource Expansion",
-    description: "Discussion about improving student support resources.",
+    title: "椰林大道與周邊交通改善提案",
+    description: "將在四月底的交通委員會，提出短、中、長期、以及其他周邊改善計畫，歡迎同學提供我們更多意見與想法",
   },
   {
     id: "issue-004",
@@ -50,19 +50,19 @@ const pseudoIssues: IssuePreview[] = [
 const pseudoEvents: EventPreview[] = [
   {
     id: "event-001",
-    title: "[News] Dormitory policy revision passed",
+    title: "[News] BOT宿舍電價調漲公聽會就在明後天",
     summary:
       "AI summary placeholder: The meeting record mentions updates to dormitory management rules and related implementation details.",
   },
   {
     id: "event-002",
-    title: "[Post] Student Union explains recent proposal",
+    title: "[問卷] 總圖地下自習室AB區座位重新劃分調查",
     summary:
       "AI summary placeholder: The post explains the background of a student affairs proposal and invites students to give feedback.",
   },
   {
     id: "event-003",
-    title: "[Issue] Recent campus discussion announced",
+    title: "[Issue] 教程報名系統 個資外洩事件說明及後續處理",
     summary:
       "AI summary placeholder: This event is connected to a larger campus issue and may become part of the issue timeline.",
   },
