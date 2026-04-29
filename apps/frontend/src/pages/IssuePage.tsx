@@ -31,41 +31,35 @@ type IssueDetail = {
 const pseudoIssues: IssueDetail[] = [
   {
     id: "issue-001",
-    title: "Dorm Management Policy Update",
+    title: "台大校園突現便衣執法人員無預警抓人",
     aiSummary:
-      "AI summary placeholder: This issue is about recent changes to dormitory management rules. Students are concerned about clarity, fairness, and how the new policy will affect daily dorm life.",
+      "AI summary placeholder: 這項議題關於未經校方同意、無緊急必要，不但違反基本程序、比例原則與最小侵害原則之外校人士，擅自進入校園進行調查行為，其嚴重損害台大的國際聲譽與學術自由",
     timeline: [
       {
         id: "timeline-001",
-        date: "2025-12-08",
-        title: "Meeting record mentions dormitory policy revision",
+        date: "2025-08-07",
+        title: "數名未著制服、未出示證件之不明人士（後來於現場自稱為移民署人員），未向校方通報或取得同意，便擅自進入國立臺灣大學校園，至學生餐廳「小小福」進行查緝行動",
         description:
-          "The student affairs meeting discussed revisions to the dormitory management policy.",
+          "該些人員在查證該民眾為本國國民後，也並未對其攔查行為進行說明，轉而立即進入臺大學生餐廳「小小福」之廚房內，於盤查後帶走一名廚工。在整起行動中，無見校方代表陪同，更在學生會初步調查後，了解這些人員未在事前進行任何通報程序，在台大校方不知情的情況下進行攔查與抓離人員之行徑。至今被帶離人員之身分、去向及後續處理情形仍未獲得官方說明。",
       },
-      {
-        id: "timeline-002",
-        date: "2025-12-15",
-        title: "Students begin discussing possible impact",
-        description:
-          "Students raised questions about rule enforcement and whether the policy was clearly explained.",
-      },
+      
     ],
     relatedEvents: [
       {
         id: "event-001",
-        title: "Dormitory policy revision passed",
+        title: "台大副校長陳良基：教育部讓警方逮捕記者非常可惡，嚴重侵害新聞自由",
       },
     ],
     comments: [
       {
         id: "comment-001",
-        author: "Anonymous Student",
-        content: "I want to know what exactly changed in the dorm rules.",
+        author: "匿名同學",
+        content: "期待持續追蹤事件的發展，同樣事情再發生一次未必能合理落幕，希望學生會公開所有與議員和校方協調過程",
       },
       {
         id: "comment-002",
-        author: "Student A",
-        content: "The timeline format makes this much easier to understand.",
+        author: "同學甲",
+        content: "希望同學們都有相對應的意識，一起守護校園，確保每間在學校發生的事是立基於良善，並遵守程序",
       },
     ],
   },

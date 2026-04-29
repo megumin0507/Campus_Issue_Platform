@@ -84,7 +84,7 @@ const pseudoComments: CommentPreview[] = [
   {
     id: "comment-001",
     author: "生工系學生",
-    content: "最近宿舍圍牆施工，大量Ubike站點遭拆除，產生許多不便，請校方規劃臨時站點解決同學們需求",
+    content: "最近宿舍圍牆施工，大量Ubike站點遭拆除造成不便",
     relatedIssue: "宿舍周邊空間規劃",
   },
   {
