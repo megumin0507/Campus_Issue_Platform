@@ -50,31 +50,31 @@ const pseudoIssues: IssuePreview[] = [
 const pseudoEvents: EventPreview[] = [
   {
     id: "event-001",
-    title: "[News] BOT宿舍電價調漲公聽會就在明後天",
+    title: "BOT宿舍電價調漲公聽會",
     summary:
       "AI summary placeholder: The meeting record mentions updates to dormitory management rules and related implementation details.",
   },
   {
     id: "event-002",
-    title: "[問卷] 總圖地下自習室AB區座位重新劃分調查",
+    title: "總圖自習室座位重新劃分",
     summary:
       "AI summary placeholder: The post explains the background of a student affairs proposal and invites students to give feedback.",
   },
   {
     id: "event-003",
-    title: "[Issue] 教程報名系統 個資外洩事件說明及後續處理",
+    title: "個資外洩事件說明",
     summary:
       "AI summary placeholder: This event is connected to a larger campus issue and may become part of the issue timeline.",
   },
   {
     id: "event-004",
-    title: "[Meeting] 國立臺灣大學校務發展規劃委員會校園規劃小組 114 學年度第 6 次委員會會議紀錄",
+    title: "校務發展規劃",
     summary:
       "AI summary placeholder: The record includes several student-related policy updates and administrative decisions.",
   },
   {
     id: "event-005",
-    title: "[Notice] Campus space usage adjustment",
+    title: "啦啦啦啦啦",
     summary:
       "AI summary placeholder: The notice describes temporary changes to space reservation and usage rules.",
   },
@@ -160,7 +160,7 @@ export default function HomePage() {
                 <h2 style={styles.eventTitle}>{event.title}</h2>
 
                 <div style={styles.summaryBox}>
-                  <strong>AI 摘要</strong>
+                  <strong style={styles.summaryLabel}>AI 摘要</strong>
                   <p style={styles.summaryText}>{event.summary}</p>
                 </div>
 
@@ -173,6 +173,7 @@ export default function HomePage() {
 }
 
 const styles: Record<string, React.CSSProperties> = {
+  //頁面
   page: {
     minHeight: "100vh",
     backgroundColor: "#f3f4f6",
@@ -181,6 +182,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontFamily: "Arial, Helvetica, sans-serif, Noto Serif TC",
   },
 
+  //上面那一條
   tab: {
     width: "220px",
     height: "30px",
@@ -226,6 +228,7 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "0 14px 12px",
   },
 
+  //意見牆
   commentWall: {
     height: "160px",
     border: "3px solid #111827",
@@ -234,6 +237,7 @@ const styles: Record<string, React.CSSProperties> = {
     overflow: "hidden",
   },
 
+  //直排標題
   verticalLabel: {
     width: "58px",
     borderRight: "3px solid #111827",
@@ -244,7 +248,8 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "24px",
     fontWeight: 700,
     backgroundColor: "#f9fafb",
-    fontFamily: "Noto Serif TC",
+    fontFamily: "Noto Serif TC", //字型
+    letterSpacing: "8px",  //字距
   },
 
   commentList: {
@@ -260,7 +265,7 @@ const styles: Record<string, React.CSSProperties> = {
   commentBubble: {
     maxWidth: "220px",
     backgroundColor: "#ffffff",
-    border: "2px solid #111827",
+    border: "1.5px solid #111827cc",
     borderRadius: "999px",
     padding: "8px 14px",
   },
@@ -303,7 +308,7 @@ const styles: Record<string, React.CSSProperties> = {
     gap: "10px",
     padding: "10px",
     marginBottom: "8px",
-    border: "2px solid #111827",
+    border: "1.5px solid #111827cc",
     backgroundColor: "#ffffff",
     color: "#111827",
     textDecoration: "none",
@@ -341,7 +346,7 @@ const styles: Record<string, React.CSSProperties> = {
   eventCard: {
     flex: "0 0 260px",
     minHeight: "260px",
-    border: "3px solid #111827",
+    border: "1.5px solid #111827cc",
     backgroundColor: "#ffffff",
     color: "#111827",
     textDecoration: "none",
@@ -358,15 +363,22 @@ const styles: Record<string, React.CSSProperties> = {
   },
 
   summaryBox: {
-    border: "3px solid #111827",
-    backgroundColor: "#f3f4f6",
+    border: "1px solid #11182780",
+    backgroundColor: "#f3f4f6cc", //最後兩位編碼是透明度，FF=100%、CC=80%、80=50%、40=25%、00=0%
     padding: "10px",
   },
 
   summaryText: {
     margin: "8px 0 0",
     fontSize: "14px",
+    color: "#4b5563", //字體顏色
     lineHeight: 1.4,
+  },
+
+  summaryLabel: {
+    fontSize: "16px",
+    color: "#1A3A5C", 
+    fontWeight: 400, //字粗
   },
 
   eventFooter: {
