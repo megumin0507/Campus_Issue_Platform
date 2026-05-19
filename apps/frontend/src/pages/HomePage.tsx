@@ -1,389 +1,376 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import type { CSSProperties } from "react";
 
-type IssuePreview = {
-  id: string;
-  title: string;
-  description: string;
-};
+import AddEventModal from "../components/AddEventModal";
+import ProposeIssueModal from "../components/ProposeIssueModal";
 
-type EventPreview = {
+type TimelineEvent = {
   id: string;
+  date: string;
   title: string;
   summary: string;
 };
 
-type CommentPreview = {
+type HotIssue = {
   id: string;
-  author: string;
-  content: string;
-  relatedIssue: string;
+  title: string;
+  summary: string;
+  events: TimelineEvent[];
 };
 
-const pseudoIssues: IssuePreview[] = [
-  {
-    id: "issue-001",
-    title: "台大校園突現便衣執法人員無預警抓人",
-    description: "學生會譴責非法盤查、要求移民署說明程序與現況",
-  },
-  {
-    id: "issue-002",
-    title: "進階英文抵免 疫情因應措施",
-    description: "應屆畢業生或延畢生可選擇報名今年 8/22（日）的外教中心自訂測驗，或暑修進階英文一、二，通過即可順利畢業",
-  },
-  {
-    id: "issue-003",
-    title: "椰林大道與周邊交通改善提案",
-    description: "將在四月底的交通委員會，提出短、中、長期、以及其他周邊改善計畫，歡迎同學提供我們更多意見與想法",
-  },
-  {
-    id: "issue-004",
-    title: "Course Selection System Feedback",
-    description: "Student opinions about course selection and system usability.",
-  },
-  {
-    id: "issue-005",
-    title: "Campus Space Usage Policy",
-    description: "Ongoing discussion about public space usage on campus.",
-  },
+const hotIssue: HotIssue = {
+  id: "issue-001",
+  title: "台大校園突現便衣執法人員無預警抓人",
+  summary:
+    "學生會譴責非法盤查、要求移民署說明程序與現況，事件持續發酵中。",
+  events: [
+    {
+      id: "event-001",
+      date: "2025-08-07",
+      title: "便衣人員進入校園",
+      summary: "未著制服人員擅自進入小小福進行查緝。",
+    },
+    {
+      id: "event-002",
+      date: "2025-08-10",
+      title: "學生會發布聲明",
+      summary: "學生會公開譴責並要求說明。",
+    },
+    {
+      id: "event-003",
+      date: "2025-08-15",
+      title: "校方回應進度",
+      summary: "校方說明已啟動內部調查程序。",
+    },
+    {
+      id: "event-004",
+      date: "2025-08-22",
+      title: "公聽會召開",
+      summary: "邀請各方代表討論校園安全。",
+    },
+  ],
+};
+
+const proposableEvents = [
+  { id: "event-001", title: "便衣人員進入校園" },
+  { id: "event-002", title: "學生會發布聲明" },
+  { id: "event-003", title: "校方回應進度" },
+  { id: "event-004", title: "公聽會召開" },
+  { id: "event-005", title: "BOT宿舍電價調漲公聽會" },
 ];
 
-const pseudoEvents: EventPreview[] = [
-  {
-    id: "event-001",
-    title: "BOT宿舍電價調漲公聽會",
-    summary:
-      "AI summary placeholder: The meeting record mentions updates to dormitory management rules and related implementation details.",
-  },
-  {
-    id: "event-002",
-    title: "總圖自習室座位重新劃分",
-    summary:
-      "AI summary placeholder: The post explains the background of a student affairs proposal and invites students to give feedback.",
-  },
-  {
-    id: "event-003",
-    title: "個資外洩事件說明",
-    summary:
-      "AI summary placeholder: This event is connected to a larger campus issue and may become part of the issue timeline.",
-  },
-  {
-    id: "event-004",
-    title: "校務發展規劃",
-    summary:
-      "AI summary placeholder: The record includes several student-related policy updates and administrative decisions.",
-  },
-  {
-    id: "event-005",
-    title: "啦啦啦啦啦",
-    summary:
-      "AI summary placeholder: The notice describes temporary changes to space reservation and usage rules.",
-  },
-];
-
-const pseudoComments: CommentPreview[] = [
-  {
-    id: "comment-001",
-    author: "生工系學生",
-    content: "最近宿舍圍牆施工，大量Ubike站點遭拆除造成不便",
-    relatedIssue: "宿舍周邊空間規劃",
-  },
-  {
-    id: "comment-002",
-    author: "exchage student",
-    content: "there is few vegetarian choice in campus , NTU should creat a environment to support student's choice to have sustainabile action.",
-    relatedIssue: "should be more environmental freiendly meal choice at campus",
-  },
-  {
-    id: "comment-003",
-    author: "電機系同學",
-    content: "覺得晚上自習肚子餓時，販賣機選項不夠多，且希望有更多果汁類選項",
-    relatedIssue: "系所自動販賣機提供商品",
-  },
-];
+function formatShortDate(iso: string) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const yy = String(d.getFullYear()).slice(-2);
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yy}.${mm}.${dd}`;
+}
 
 export default function HomePage() {
+  const navigate = useNavigate();
+  const [addEventOpen, setAddEventOpen] = useState(false);
+  const [proposeOpen, setProposeOpen] = useState(false);
+
+  const sortedEvents = [...hotIssue.events].sort((a, b) =>
+    a.date.localeCompare(b.date)
+  );
+
   return (
     <main style={styles.page}>
+      <div style={styles.overlay}>
+        <div style={styles.topBar}>
+          <button
+            type="button"
+            style={styles.loginButton}
+            onClick={() => console.log("login clicked")}
+          >
+            <span style={styles.userIcon} aria-hidden="true">
+              👤
+            </span>
+            login
+          </button>
+        </div>
 
-        <section style={styles.marqueeBox}>
-          <button style={styles.arrowButton}>‹</button>
-          <h1 style={styles.marqueeText}>Campus Issue Platform</h1>
-          <button style={styles.arrowButton}>›</button>
-        </section>
+        <div style={styles.contentGrid}>
+          <h1 style={styles.heroTitle}>HOT ISSUE</h1>
 
-        <section style={styles.middleSection}>
-          <section style={styles.commentWall}>
-            <div style={styles.verticalLabel}>意見牆</div>
+          <Link to={`/issues/${hotIssue.id}`} style={styles.hotIssueTitle}>
+            {hotIssue.title}
+          </Link>
 
-            <div style={styles.commentList}>
-              {pseudoComments.map((comment) => (
-                <div key={comment.id} style={styles.commentBubble}>
-                  <strong>{comment.author}</strong>
-                  <p style={styles.commentText}>{comment.content}</p>
-                  <span style={styles.commentIssue}>[{comment.relatedIssue}]</span>
-                </div>
-              ))}
-            </div>
-          </section>
+          <p style={styles.hotIssueSummary}>{hotIssue.summary}</p>
 
-          <section style={styles.latestNewsSection}>
-            <div style={styles.latestNewsBox}>
-              <div style={styles.verticalLabel}>最新消息</div>
+          <button
+            type="button"
+            style={styles.proposeBtn}
+            onClick={() => setProposeOpen(true)}
+          >
+            + propose new issue
+          </button>
 
-              <div style={styles.issueList}>
-                {pseudoIssues.map((issue, index) => (
-                  <Link
-                    key={issue.id}
-                    to={`/issues/${issue.id}`}
-                    style={styles.issueItem}
-                  >
-                    <span style={styles.issueNumber}>{index + 1}.</span>
-                    <div>
-                      <h3 style={styles.issueTitle}>{issue.title}</h3>
-                      <p style={styles.issueDescription}>{issue.description}</p>
-                    </div>
-                  </Link>
-                ))}
+          <h2 style={styles.timelineHeading}>TIMELINE</h2>
+
+          <button
+            type="button"
+            style={styles.addEventBtn}
+            onClick={() => setAddEventOpen(true)}
+          >
+            + add new event
+          </button>
+
+          <div style={styles.timelineScroller}>
+            {sortedEvents.map((ev) => (
+              <div key={ev.id} style={styles.timelineRow}>
+                <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
+                  <div style={styles.timelineDate}>
+                    {formatShortDate(ev.date)}
+                  </div>
+                  <div style={styles.timelineTitle}>{ev.title}</div>
+                  <div style={styles.timelineSummary}>{ev.summary}</div>
+                </Link>
+                <span style={styles.arrow}>→</span>
               </div>
-            </div>
-          </section>
-        </section>
-
-        <section style={styles.eventSection}>
-          <div style={styles.eventScroller}>
-            {pseudoEvents.map((event) => (
-              <Link
-                key={event.id}
-                to={`/events/${event.id}`}
-                style={styles.eventCard}
-              >
-                <h2 style={styles.eventTitle}>{event.title}</h2>
-
-                <div style={styles.summaryBox}>
-                  <strong style={styles.summaryLabel}>AI 摘要</strong>
-                  <p style={styles.summaryText}>{event.summary}</p>
-                </div>
-
-              </Link>
             ))}
           </div>
-        </section>
+
+          <button
+            type="button"
+            style={styles.moreIssueBtn}
+            onClick={() => navigate("/overview")}
+          >
+            more issue
+          </button>
+        </div>
+      </div>
+
+      <AddEventModal
+        open={addEventOpen}
+        onClose={() => setAddEventOpen(false)}
+      />
+
+      <ProposeIssueModal
+        open={proposeOpen}
+        onClose={() => setProposeOpen(false)}
+        events={proposableEvents}
+      />
     </main>
   );
 }
 
-const styles: Record<string, React.CSSProperties> = {
-  //頁面
+const styles: Record<string, CSSProperties> = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#f3f4f6",
-    padding: "24px",
+    position: "relative",
+    backgroundImage: "url('/home_back.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
     boxSizing: "border-box",
-    fontFamily: "Arial, Helvetica, sans-serif, Noto Serif TC",
   },
 
-  //上面那一條
-  tab: {
-    width: "220px",
-    height: "30px",
-    border: "3px solid #111827",
-    borderBottom: "none",
-    borderTopLeftRadius: "16px",
-    borderTopRightRadius: "16px",
-    padding: "6px 12px",
+  overlay: {
+    minHeight: "100vh",
+    background:
+      "linear-gradient(to right, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 55%)",
+    padding: "32px clamp(24px, 5vw, 64px) 48px",
     boxSizing: "border-box",
-    backgroundColor: "#ffffff",
-    fontSize: "14px",
-  },
-
-  marqueeBox: {
-    height: "86px",
-    margin: "14px",
-    border: "3px solid #111827",
     display: "flex",
+    flexDirection: "column",
+  },
+
+  topBar: {
+    display: "flex",
+    justifyContent: "flex-end",
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: "0 16px",
-    boxSizing: "border-box",
-    backgroundColor: "#e5e7eb",
+    marginBottom: "16px",
   },
 
-  marqueeText: {
-    margin: 0,
-    fontSize: "32px",
-    letterSpacing: "4px",
-  },
-
-  arrowButton: {
+  loginButton: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "8px",
+    background: "transparent",
     border: "none",
-    backgroundColor: "transparent",
-    fontSize: "32px",
-    cursor: "default",
+    padding: 0,
+    cursor: "pointer",
+    color: "#7a5d41",
+    fontSize: "1.05rem",
+    fontWeight: 600,
   },
 
-  middleSection: {
+  userIcon: {
+    fontSize: "1.3rem",
+    color: "#7a5d41",
+  },
+
+  contentGrid: {
+    flex: 1,
     display: "grid",
-    gridTemplateColumns: "1fr 1.15fr",
-    gap: "16px",
-    margin: "0 14px 12px",
+    gridTemplateColumns: "minmax(0, 1fr) auto",
+    gridTemplateRows: "auto auto auto auto auto auto",
+    columnGap: "32px",
+    rowGap: "16px",
+    alignItems: "start",
   },
 
-  //意見牆
-  commentWall: {
-    height: "160px",
-    border: "3px solid #111827",
+  heroTitle: {
+    gridColumn: 1,
+    gridRow: 1,
+    margin: 0,
+    fontSize: "clamp(5rem, 10vw, 9rem)",
+    fontWeight: 900,
+    letterSpacing: "0.05em",
+    color: "#331c06",
+    lineHeight: 1,
+  },
+
+  hotIssueTitle: {
+    gridColumn: 1,
+    gridRow: 2,
+    fontSize: "2.5rem",
+    fontWeight: 700,
+    color: "#331c06",
+    textDecoration: "none",
+    lineHeight: 1.3,
+    marginTop: "8px",
+    maxWidth: "820px",
+  },
+
+  hotIssueSummary: {
+    gridColumn: 1,
+    gridRow: 3,
+    margin: 0,
+    fontSize: "1.1rem",
+    color: "#633d19",
+    lineHeight: 1.9,
+    maxWidth: "720px",
+  },
+
+  proposeBtn: {
+    gridColumn: 2,
+    gridRow: "2 / 4",
+    alignSelf: "center",
+    justifySelf: "end",
+    background: "#553312",
+    color: "#fffbf2",
+    border: "none",
+    height: "48px",
+    minWidth: "220px",
+    padding: "0 28px",
+    cursor: "pointer",
+    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
+    fontSize: "1rem",
+    fontWeight: 600,
+    lineHeight: 1,
+    borderRadius: "4px",
+    whiteSpace: "nowrap",
+  },
+
+  timelineHeading: {
+    gridColumn: 1,
+    gridRow: 4,
+    margin: "32px 0 0",
+    fontSize: "3rem",
+    fontWeight: 800,
+    letterSpacing: "0.05em",
+    color: "#553312",
+    textTransform: "uppercase",
+    lineHeight: 1,
+  },
+
+  addEventBtn: {
+    gridColumn: 2,
+    gridRow: 4,
+    alignSelf: "end",
+    justifySelf: "end",
+    background: "#553312",
+    color: "#fffbf2",
+    border: "none",
+    height: "48px",
+    minWidth: "220px",
+    padding: "0 28px",
+    cursor: "pointer",
+    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
+    fontSize: "1rem",
+    fontWeight: 600,
+    lineHeight: 1,
+    borderRadius: "4px",
+    whiteSpace: "nowrap",
+  },
+
+  timelineScroller: {
+    gridColumn: "1 / -1",
+    gridRow: 5,
     display: "flex",
-    backgroundColor: "#dbeafe",
-    overflow: "hidden",
+    alignItems: "stretch",
+    gap: "8px",
+    overflowX: "auto",
+    padding: "8px 0 16px",
   },
 
-  //直排標題
-  verticalLabel: {
-    width: "58px",
-    borderRight: "3px solid #111827",
+  timelineRow: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    writingMode: "vertical-rl",
-    fontSize: "24px",
-    fontWeight: 700,
-    backgroundColor: "#f9fafb",
-    fontFamily: "Noto Serif TC", //字型
-    letterSpacing: "8px",  //字距
+    gap: "8px",
+    flex: "0 0 auto",
   },
 
-  commentList: {
-    flex: 1,
-    display: "flex",
-    flexWrap: "wrap",
-    alignContent: "flex-start",
-    gap: "10px",
-    padding: "12px",
-    overflow: "hidden",
-  },
-
-  commentBubble: {
-    maxWidth: "220px",
-    backgroundColor: "#ffffff",
-    border: "1.5px solid #111827cc",
-    borderRadius: "999px",
-    padding: "8px 14px",
-  },
-
-  commentText: {
-    margin: "4px 0",
-    fontSize: "13px",
-  },
-
-  commentIssue: {
-    color: "#dc2626",
-    fontSize: "12px",
-    fontWeight: 700,
-  },
-
-  latestNewsSection: {
-    height: "180px",
+  timelineNode: {
+    flex: "0 0 220px",
+    minHeight: "140px",
+    padding: "16px",
+    boxSizing: "border-box",
+    backgroundColor: "rgba(122, 93, 65, 0.7)",
+    textDecoration: "none",
+    borderRadius: "12px",
     display: "flex",
     flexDirection: "column",
     gap: "8px",
   },
 
-  latestNewsBox: {
-    flex: 1,
-    border: "3px solid #111827",
-    display: "flex",
-    overflow: "hidden",
-    backgroundColor: "#fef3c7",
-  },
-
-  issueList: {
-    flex: 1,
-    overflowY: "auto",
-    padding: "10px",
-    boxSizing: "border-box",
-  },
-
-  issueItem: {
-    display: "flex",
-    gap: "10px",
-    padding: "10px",
-    marginBottom: "8px",
-    border: "1.5px solid #111827cc",
-    backgroundColor: "#ffffff",
-    color: "#111827",
-    textDecoration: "none",
-  },
-
-  issueNumber: {
+  timelineDate: {
+    fontSize: "1.05rem",
     fontWeight: 700,
+    color: "#fffbf2",
   },
 
-  issueTitle: {
-    margin: 0,
-    fontSize: "16px",
-  },
-
-  issueDescription: {
-    margin: "4px 0 0",
-    fontSize: "13px",
-    color: "#4b5563",
-  },
-
-  eventSection: {
-    margin: "0 14px 14px",
-    border: "3px solid #111827",
-    backgroundColor: "#ecfdf5",
-  },
-
-  eventScroller: {
-    display: "flex",
-    gap: "12px",
-    overflowX: "auto",
-    padding: "12px",
-    boxSizing: "border-box",
-  },
-
-  eventCard: {
-    flex: "0 0 260px",
-    minHeight: "260px",
-    border: "1.5px solid #111827cc",
-    backgroundColor: "#ffffff",
-    color: "#111827",
-    textDecoration: "none",
-    padding: "14px",
-    boxSizing: "border-box",
-    display: "flex",
-    flexDirection: "column",
-  },
-
-  eventTitle: {
-    margin: "0 0 14px",
-    fontSize: "20px",
-    lineHeight: 1.25,
-  },
-
-  summaryBox: {
-    border: "1px solid #11182780",
-    backgroundColor: "#f3f4f6cc", //最後兩位編碼是透明度，FF=100%、CC=80%、80=50%、40=25%、00=0%
-    padding: "10px",
-  },
-
-  summaryText: {
-    margin: "8px 0 0",
-    fontSize: "14px",
-    color: "#4b5563", //字體顏色
-    lineHeight: 1.4,
-  },
-
-  summaryLabel: {
-    fontSize: "16px",
-    color: "#1A3A5C", 
-    fontWeight: 400, //字粗
-  },
-
-  eventFooter: {
-    marginTop: "auto",
-    textAlign: "right",
+  timelineTitle: {
+    fontSize: "1rem",
     fontWeight: 700,
+    color: "#fffbf2",
+    lineHeight: 1.3,
+  },
+
+  timelineSummary: {
+    fontSize: "0.85rem",
+    color: "#fffbf2",
+    opacity: 0.9,
+    lineHeight: 1.5,
+  },
+
+  arrow: {
+    fontSize: "2rem",
+    fontWeight: 700,
+    color: "#553312",
+  },
+
+  moreIssueBtn: {
+    gridColumn: 2,
+    gridRow: 6,
+    justifySelf: "end",
+    marginTop: "16px",
+    border: "2px solid #553312",
+    backgroundColor: "transparent",
+    color: "#553312",
+    padding: "10px 24px",
+    cursor: "pointer",
+    fontSize: "1rem",
+    fontWeight: 600,
+    borderRadius: "4px",
+    whiteSpace: "nowrap",
   },
 };
