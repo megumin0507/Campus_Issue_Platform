@@ -97,12 +97,68 @@ const pseudoEvents: EventDetail[] = [
   },
   {
     id: "event-005",
-    title: "Campus space usage adjustment notice",
-    time: "2025-12-08",
+    title: "校發會110學年度第5次會議：未來機車將不由長興街進出校園",
+    time: "2022-04-27",
     content:
-      "The school announced temporary adjustments to campus space usage and reservation rules.",
-    sourceOrganization: "NTU General Affairs Office",
+      "現況鄰近基隆路/長興街口現有約4,430床位的學生宿舍，未來將研擬增建3,750床位於，其所衍生之學生往返校總區的自行車旅次，將大量增加使用長興街校門口之自行車流量。由此未來規劃機車將不由長興街進出校園，故針對基隆路三段、長興街及舟山路所夾該區之交通動線調整進行規劃，改善長興街校門口交通通行情況。 ",
+    sourceOrganization: "校園規劃小組",
     sourceUrl: "https://osa.ntu.edu.tw/6688444",
+    relatedIssue: {
+      id: "issue-005",
+      title: "Campus Space Usage Policy",
+    },
+    comments: [],
+  },
+  {
+    id: "event-006",
+    title: "邀集校內相關單位 學府里及工務局 交通觸及台北市自來水事業處等單位會勘",
+    time: "2022-11-11",
+    content:
+      "未來舟山路底開口採經與會單位原則同意，以老師使用方便及安全管理為原則。",
+    sourceOrganization: "校園規劃小組",
+    sourceUrl: "https://www.instagram.com/ntusa.taiwan",
+    relatedIssue: {
+      id: "issue-005",
+      title: "Campus Space Usage Policy",
+    },
+    comments: [],
+  },
+  {
+    id: "event-007",
+    title: "短期工程－機車破口：舟山路底（基隆路三段30巷）開闢機車出入口工程規劃設計",
+    time: "2023-03-14",
+    content:
+      "112年03月14日~113年2月5日進行「舟山路底(基隆路三段30巷)開闢機車出入口工程」規劃設計至工程完工",
+    sourceOrganization: "校園規劃小組",
+    sourceUrl: "https://www.instagram.com/ntusa.taiwan",
+    relatedIssue: {
+      id: "issue-005",
+      title: "Campus Space Usage Policy",
+    },
+    comments: [],
+  },
+  {
+    id: "event-008",
+    title: "長興街校門口拓寬工程",
+    time: "2024-10-09",
+    content:
+      "「自行車空橋工程」替代方案交通影響評估討論會議結論第一點「即刻進行方案一(長興街拓寬)約1~1.5年做有效調整，提前讓現有長興舍區住宿學生習慣，於拓寬後觀察實際往返校總區之人、自行車流交通情形，…。",
+    sourceOrganization: "校園規劃小組",
+    sourceUrl: "https://www.instagram.com/ntusa.taiwan",
+    relatedIssue: {
+      id: "issue-005",
+      title: "Campus Space Usage Policy",
+    },
+    comments: [],
+  },
+  {
+    id: "event-009",
+    title: "明達館側戶外環境改善工程基本設計",
+    time: "2026-04-08",
+    content:
+      "長興街為校園內重要之東側通學動線與交通節點，設計出最完善動線其中包含一．自行車道拓寬 二．動線調整及部分圍牆拆除 三．明達館機車停車格及中庭景觀 四．舟山路自行車穿線規劃及路緣線型調整",
+    sourceOrganization: "校園規劃小組委員會",
+    sourceUrl: "https://www.instagram.com/ntusa.taiwan",
     relatedIssue: {
       id: "issue-005",
       title: "Campus Space Usage Policy",

@@ -19,7 +19,8 @@ type HotIssue = {
   events: TimelineEvent[];
 };
 
-const hotIssue: HotIssue = {
+const hotIssue: HotIssue = [
+  {
   id: "issue-001",
   title: "台大校園突現便衣執法人員無預警抓人",
   summary:
@@ -50,8 +51,46 @@ const hotIssue: HotIssue = {
       summary: "邀請各方代表討論校園安全。",
     },
   ],
-};
-
+},
+{
+  id: "issue-002",
+  title: "對於增建學生宿舍而增加長興街校門口交通流量之對策",
+  summary:
+    "對於因應117年新增3,000床學生宿舍所帶來的行人與自行車流量，同時改善尖峰時段人車爭道與動線交織問題。",
+  events: [
+    {
+      id: "event-005",
+      date: "2022-04-27",
+      title: "校發會110學年度第5次會議",
+      summary: "未來機車將不由長興街進出校園。",
+    },
+    {
+      id: "event-006",
+      date: "2022-11-11",
+      title: "進行規劃前會勘",
+      summary: "邀集校內相關單位 學府里及工務局 交通觸及台北市自來水事業處等單位會勘。",
+    },
+    {
+      id: "event-007",
+      date: "2023-03-14",
+      title: "機車出入配套措施",
+      summary: "進行「舟山路底(基隆路三段30巷)開闢機車出入口工程」。",
+    },
+    {
+      id: "event-008",
+      date: "2024-10-09",
+      title: "長興街校門口拓寬工程",
+      summary: "提前讓現有長興舍區住宿學生習慣，於拓寬後觀察實際往返校總區之人、自行車流交通情形。",
+    },
+    {
+      id: "event-009",
+      date: "2026-04-08",
+      title: "明達館側戶外環境改善工程基本設計",
+      summary: "對此校園重要東側通學路線與交通節點進行動線改善設計。",
+    },
+  ],
+},
+];
 const proposableEvents = [
   { id: "event-001", title: "便衣人員進入校園" },
   { id: "event-002", title: "學生會發布聲明" },
@@ -97,44 +136,34 @@ export default function HomePage() {
         <div style={styles.contentGrid}>
           <h1 style={styles.heroTitle}>HOT ISSUE</h1>
 
-          <Link to={`/issues/${hotIssue.id}`} style={styles.hotIssueTitle}>
-            {hotIssue.title}
-          </Link>
+          {hotIssues.map((issue) => {
+  const sortedEvents = [...issue.events].sort((a, b) =>
+    a.date.localeCompare(b.date)
+  );
 
-          <p style={styles.hotIssueSummary}>{hotIssue.summary}</p>
+  return (
+    <section key={issue.id} style={styles.issueSection}>
+      <Link to={`/issues/${issue.id}`} style={styles.hotIssueTitle}>
+        {issue.title}
+      </Link>
 
-          <button
-            type="button"
-            style={styles.proposeBtn}
-            onClick={() => setProposeOpen(true)}
-          >
-            + propose new issue
-          </button>
+      <p style={styles.hotIssueSummary}>{issue.summary}</p>
 
-          <h2 style={styles.timelineHeading}>TIMELINE</h2>
-
-          <button
-            type="button"
-            style={styles.addEventBtn}
-            onClick={() => setAddEventOpen(true)}
-          >
-            + add new event
-          </button>
-
-          <div style={styles.timelineScroller}>
-            {sortedEvents.map((ev) => (
-              <div key={ev.id} style={styles.timelineRow}>
-                <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
-                  <div style={styles.timelineDate}>
-                    {formatShortDate(ev.date)}
-                  </div>
-                  <div style={styles.timelineTitle}>{ev.title}</div>
-                  <div style={styles.timelineSummary}>{ev.summary}</div>
-                </Link>
-                <span style={styles.arrow}>→</span>
-              </div>
-            ))}
+      <div style={styles.timelineScroller}>
+        {sortedEvents.map((ev) => (
+          <div key={ev.id} style={styles.timelineRow}>
+            <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
+              <div style={styles.timelineDate}>{formatShortDate(ev.date)}</div>
+              <div style={styles.timelineTitle}>{ev.title}</div>
+              <div style={styles.timelineSummary}>{ev.summary}</div>
+            </Link>
+            <span style={styles.arrow}>→</span>
           </div>
+        ))}
+      </div>
+    </section>
+  );
+})}
 
           <button
             type="button"
@@ -357,7 +386,10 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 700,
     color: "#553312",
   },
-
+  issueSection: {
+  gridColumn: "1 / -1",
+  marginBottom: "56px",
+},
   moreIssueBtn: {
     gridColumn: 2,
     gridRow: 6,
