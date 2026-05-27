@@ -19,7 +19,7 @@ type HotIssue = {
   events: TimelineEvent[];
 };
 
-const hotIssue: HotIssue = [
+const hotIssues: HotIssue[] = [
   {
   id: "issue-001",
   title: "台大校園突現便衣執法人員無預警抓人",
@@ -113,10 +113,6 @@ export default function HomePage() {
   const [addEventOpen, setAddEventOpen] = useState(false);
   const [proposeOpen, setProposeOpen] = useState(false);
 
-  const sortedEvents = [...hotIssue.events].sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
-
   return (
     <main style={styles.page}>
       <div style={styles.overlay}>
@@ -136,34 +132,34 @@ export default function HomePage() {
         <div style={styles.contentGrid}>
           <h1 style={styles.heroTitle}>HOT ISSUE</h1>
 
-          {hotIssues.map((issue) => {
-  const sortedEvents = [...issue.events].sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
+      {hotIssues.map((issue) => {
+        const sortedEvents = [...issue.events].sort((a, b) =>
+          a.date.localeCompare(b.date)
+        );
 
-  return (
-    <section key={issue.id} style={styles.issueSection}>
-      <Link to={`/issues/${issue.id}`} style={styles.hotIssueTitle}>
-        {issue.title}
-      </Link>
+            return (
+              <section key={issue.id} style={styles.issueSection}>
+                <Link to={`/issues/${issue.id}`} style={styles.hotIssueTitle}>
+                  {issue.title}
+                </Link>
 
-      <p style={styles.hotIssueSummary}>{issue.summary}</p>
+                <p style={styles.hotIssueSummary}>{issue.summary}</p>
 
-      <div style={styles.timelineScroller}>
-        {sortedEvents.map((ev) => (
-          <div key={ev.id} style={styles.timelineRow}>
-            <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
-              <div style={styles.timelineDate}>{formatShortDate(ev.date)}</div>
-              <div style={styles.timelineTitle}>{ev.title}</div>
-              <div style={styles.timelineSummary}>{ev.summary}</div>
-            </Link>
-            <span style={styles.arrow}>→</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-})}
+                <div style={styles.timelineScroller}>
+                  {sortedEvents.map((ev) => (
+                    <div key={ev.id} style={styles.timelineRow}>
+                      <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
+                        <div style={styles.timelineDate}>{formatShortDate(ev.date)}</div>
+                        <div style={styles.timelineTitle}>{ev.title}</div>
+                        <div style={styles.timelineSummary}>{ev.summary}</div>
+                      </Link>
+                      <span style={styles.arrow}>→</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
 
           <button
             type="button"
