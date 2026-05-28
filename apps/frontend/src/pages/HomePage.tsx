@@ -19,78 +19,83 @@ type HotIssue = {
   events: TimelineEvent[];
 };
 
-const hotIssue: HotIssue = [
+const hotIssues: HotIssue[] = [
   {
-  id: "issue-001",
-  title: "台大校園突現便衣執法人員無預警抓人",
-  summary:
-    "學生會譴責非法盤查、要求移民署說明程序與現況，事件持續發酵中。",
-  events: [
-    {
-      id: "event-001",
-      date: "2025-08-07",
-      title: "便衣人員進入校園",
-      summary: "未著制服人員擅自進入小小福進行查緝。",
-    },
-    {
-      id: "event-002",
-      date: "2025-08-10",
-      title: "學生會發布聲明",
-      summary: "學生會公開譴責並要求說明。",
-    },
-    {
-      id: "event-003",
-      date: "2025-08-15",
-      title: "校方回應進度",
-      summary: "校方說明已啟動內部調查程序。",
-    },
-    {
-      id: "event-004",
-      date: "2025-08-22",
-      title: "公聽會召開",
-      summary: "邀請各方代表討論校園安全。",
-    },
-  ],
-},
-{
-  id: "issue-002",
-  title: "對於增建學生宿舍而增加長興街校門口交通流量之對策",
-  summary:
-    "對於因應117年新增3,000床學生宿舍所帶來的行人與自行車流量，同時改善尖峰時段人車爭道與動線交織問題。",
-  events: [
-    {
-      id: "event-005",
-      date: "2022-04-27",
-      title: "校發會110學年度第5次會議",
-      summary: "未來機車將不由長興街進出校園。",
-    },
-    {
-      id: "event-006",
-      date: "2022-11-11",
-      title: "進行規劃前會勘",
-      summary: "邀集校內相關單位 學府里及工務局 交通觸及台北市自來水事業處等單位會勘。",
-    },
-    {
-      id: "event-007",
-      date: "2023-03-14",
-      title: "機車出入配套措施",
-      summary: "進行「舟山路底(基隆路三段30巷)開闢機車出入口工程」。",
-    },
-    {
-      id: "event-008",
-      date: "2024-10-09",
-      title: "長興街校門口拓寬工程",
-      summary: "提前讓現有長興舍區住宿學生習慣，於拓寬後觀察實際往返校總區之人、自行車流交通情形。",
-    },
-    {
-      id: "event-009",
-      date: "2026-04-08",
-      title: "明達館側戶外環境改善工程基本設計",
-      summary: "對此校園重要東側通學路線與交通節點進行動線改善設計。",
-    },
-  ],
-},
+    id: "issue-001",
+    title: "台大校園突現便衣執法人員無預警抓人",
+    summary:
+      "學生會譴責非法盤查、要求移民署說明程序與現況，事件持續發酵中。",
+    events: [
+      {
+        id: "event-001",
+        date: "2025-08-07",
+        title: "便衣人員進入校園",
+        summary: "未著制服人員擅自進入小小福進行查緝。",
+      },
+      {
+        id: "event-002",
+        date: "2025-08-10",
+        title: "學生會發布聲明",
+        summary: "學生會公開譴責並要求說明。",
+      },
+      {
+        id: "event-003",
+        date: "2025-08-15",
+        title: "校方回應進度",
+        summary: "校方說明已啟動內部調查程序。",
+      },
+      {
+        id: "event-004",
+        date: "2025-08-22",
+        title: "公聽會召開",
+        summary: "邀請各方代表討論校園安全。",
+      },
+    ],
+  },
+  {
+    id: "issue-002",
+    title: "對於增建學生宿舍而增加長興街校門口交通流量之對策",
+    summary:
+      "對於因應117年新增3,000床學生宿舍所帶來的行人與自行車流量，同時改善尖峰時段人車爭道與動線交織問題。",
+    events: [
+      {
+        id: "event-005",
+        date: "2022-04-27",
+        title: "校發會110學年度第5次會議",
+        summary: "未來機車將不由長興街進出校園。",
+      },
+      {
+        id: "event-006",
+        date: "2022-11-11",
+        title: "進行規劃前會勘",
+        summary:
+          "邀集校內相關單位 學府里及工務局 交通處及台北市自來水事業處等單位會勘。",
+      },
+      {
+        id: "event-007",
+        date: "2023-03-14",
+        title: "機車出入配套措施",
+        summary:
+          "進行「舟山路底(基隆路三段30巷)開闢機車出入口工程」。",
+      },
+      {
+        id: "event-008",
+        date: "2024-10-09",
+        title: "長興街校門口拓寬工程",
+        summary:
+          "提前讓現有長興舍區住宿學生習慣，於拓寬後觀察實際往返校總區之人、自行車流交通情形。",
+      },
+      {
+        id: "event-009",
+        date: "2026-04-08",
+        title: "明達館側戶外環境改善工程基本設計",
+        summary:
+          "對此校園重要東側通學路線與交通節點進行動線改善設計。",
+      },
+    ],
+  },
 ];
+
 const proposableEvents = [
   { id: "event-001", title: "便衣人員進入校園" },
   { id: "event-002", title: "學生會發布聲明" },
@@ -113,10 +118,6 @@ export default function HomePage() {
   const [addEventOpen, setAddEventOpen] = useState(false);
   const [proposeOpen, setProposeOpen] = useState(false);
 
-  const sortedEvents = [...hotIssue.events].sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
-
   return (
     <main style={styles.page}>
       <div style={styles.overlay}>
@@ -137,33 +138,55 @@ export default function HomePage() {
           <h1 style={styles.heroTitle}>HOT ISSUE</h1>
 
           {hotIssues.map((issue) => {
-  const sortedEvents = [...issue.events].sort((a, b) =>
-    a.date.localeCompare(b.date)
-  );
+            const sortedEvents = [...issue.events].sort((a, b) =>
+              a.date.localeCompare(b.date)
+            );
 
-  return (
-    <section key={issue.id} style={styles.issueSection}>
-      <Link to={`/issues/${issue.id}`} style={styles.hotIssueTitle}>
-        {issue.title}
-      </Link>
+            return (
+              <section key={issue.id} style={styles.issueSection}>
+                <Link to={`/issues/${issue.id}`} style={styles.hotIssueTitle}>
+                  {issue.title}
+                </Link>
 
-      <p style={styles.hotIssueSummary}>{issue.summary}</p>
+                <p style={styles.hotIssueSummary}>{issue.summary}</p>
 
-      <div style={styles.timelineScroller}>
-        {sortedEvents.map((ev) => (
-          <div key={ev.id} style={styles.timelineRow}>
-            <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
-              <div style={styles.timelineDate}>{formatShortDate(ev.date)}</div>
-              <div style={styles.timelineTitle}>{ev.title}</div>
-              <div style={styles.timelineSummary}>{ev.summary}</div>
-            </Link>
-            <span style={styles.arrow}>→</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-})}
+                <div style={styles.issueButtons}>
+                  <button
+                    type="button"
+                    style={styles.proposeBtn}
+                    onClick={() => setProposeOpen(true)}
+                  >
+                    + propose new issue
+                  </button>
+
+                  <button
+                    type="button"
+                    style={styles.addEventBtn}
+                    onClick={() => setAddEventOpen(true)}
+                  >
+                    + add new event
+                  </button>
+                </div>
+
+                <h2 style={styles.timelineHeading}>TIMELINE</h2>
+
+                <div style={styles.timelineScroller}>
+                  {sortedEvents.map((ev) => (
+                    <div key={ev.id} style={styles.timelineRow}>
+                      <Link to={`/events/${ev.id}`} style={styles.timelineNode}>
+                        <div style={styles.timelineDate}>
+                          {formatShortDate(ev.date)}
+                        </div>
+                        <div style={styles.timelineTitle}>{ev.title}</div>
+                        <div style={styles.timelineSummary}>{ev.summary}</div>
+                      </Link>
+                      <span style={styles.arrow}>→</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
 
           <button
             type="button"
@@ -197,6 +220,7 @@ const styles: Record<string, CSSProperties> = {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
     fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
     boxSizing: "border-box",
   },
@@ -240,14 +264,14 @@ const styles: Record<string, CSSProperties> = {
     flex: 1,
     display: "grid",
     gridTemplateColumns: "minmax(0, 1fr) auto",
-    gridTemplateRows: "auto auto auto auto auto auto",
+    gridTemplateRows: "auto min-content auto auto",
     columnGap: "32px",
     rowGap: "16px",
     alignItems: "start",
   },
 
   heroTitle: {
-    gridColumn: 1,
+    gridColumn: "1 / -1",
     gridRow: 1,
     margin: 0,
     fontSize: "clamp(5rem, 10vw, 9rem)",
@@ -257,9 +281,22 @@ const styles: Record<string, CSSProperties> = {
     lineHeight: 1,
   },
 
+  issueSection: {
+    gridColumn: "1 / -1",
+    minHeight: "calc(100vh - 210px)",
+    display: "grid",
+    gridTemplateColumns: "minmax(0, 1fr) auto",
+    gridTemplateRows: "auto auto auto auto",
+    columnGap: "32px",
+    rowGap: "16px",
+    alignItems: "start",
+    paddingTop: "0",
+    boxSizing: "border-box",
+  },
+
   hotIssueTitle: {
     gridColumn: 1,
-    gridRow: 2,
+    gridRow: 1,
     fontSize: "2.5rem",
     fontWeight: 700,
     color: "#331c06",
@@ -269,21 +306,43 @@ const styles: Record<string, CSSProperties> = {
     maxWidth: "820px",
   },
 
-  hotIssueSummary: {
-    gridColumn: 1,
-    gridRow: 3,
-    margin: 0,
-    fontSize: "1.1rem",
-    color: "#633d19",
-    lineHeight: 1.9,
-    maxWidth: "720px",
+hotIssueSummary: {
+  gridColumn: 1,
+  gridRow: 2,
+  margin: "-8px 0 0",
+  fontSize: "1.1rem",
+  color: "#633d19",
+  lineHeight: 1.6,
+  maxWidth: "720px",
+},
+
+  issueButtons: {
+    gridColumn: 2,
+    gridRow: "1 / 3",
+    alignSelf: "center",
+    justifySelf: "end",
+    display: "flex",
+    flexDirection: "column",
+    gap: "64px",
   },
 
   proposeBtn: {
-    gridColumn: 2,
-    gridRow: "2 / 4",
-    alignSelf: "center",
-    justifySelf: "end",
+    background: "#553312",
+    color: "#fffbf2",
+    border: "none",
+    height: "48px",
+    minWidth: "220px",
+    padding: "0 28px",
+    cursor: "pointer",
+    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
+    fontSize: "1rem",
+    fontWeight: 600,
+    lineHeight: 1,
+    borderRadius: "4px",
+    whiteSpace: "nowrap",
+  },
+
+  addEventBtn: {
     background: "#553312",
     color: "#fffbf2",
     border: "none",
@@ -301,7 +360,7 @@ const styles: Record<string, CSSProperties> = {
 
   timelineHeading: {
     gridColumn: 1,
-    gridRow: 4,
+    gridRow: 3,
     margin: "32px 0 0",
     fontSize: "3rem",
     fontWeight: 800,
@@ -311,29 +370,9 @@ const styles: Record<string, CSSProperties> = {
     lineHeight: 1,
   },
 
-  addEventBtn: {
-    gridColumn: 2,
-    gridRow: 4,
-    alignSelf: "end",
-    justifySelf: "end",
-    background: "#553312",
-    color: "#fffbf2",
-    border: "none",
-    height: "48px",
-    minWidth: "220px",
-    padding: "0 28px",
-    cursor: "pointer",
-    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
-    fontSize: "1rem",
-    fontWeight: 600,
-    lineHeight: 1,
-    borderRadius: "4px",
-    whiteSpace: "nowrap",
-  },
-
   timelineScroller: {
     gridColumn: "1 / -1",
-    gridRow: 5,
+    gridRow: 4,
     display: "flex",
     alignItems: "stretch",
     gap: "8px",
@@ -386,13 +425,9 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 700,
     color: "#553312",
   },
-  issueSection: {
-  gridColumn: "1 / -1",
-  marginBottom: "56px",
-},
+
   moreIssueBtn: {
     gridColumn: 2,
-    gridRow: 6,
     justifySelf: "end",
     marginTop: "16px",
     border: "2px solid #553312",

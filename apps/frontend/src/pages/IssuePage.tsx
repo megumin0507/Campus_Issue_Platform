@@ -65,9 +65,9 @@ const pseudoIssues: IssueDetail[] = [
   },
   {
     id: "issue-002",
-    title: "Student Club Regulation Revision",
+    title: "對於增建學生宿舍而增加長興街校門口交通流量之對策",
     aiSummary:
-      "AI summary placeholder: This issue concerns changes to student organization and club regulations. The main focus is how clubs are created, reviewed, and managed.",
+      "對於因應117年新增3,000床學生宿舍所帶來的行人與自行車流量，同時改善尖峰時段人車爭道與動線交織問題",
     timeline: [
       {
         id: "timeline-003",
@@ -79,15 +79,15 @@ const pseudoIssues: IssueDetail[] = [
     ],
     relatedEvents: [
       {
-        id: "event-002",
-        title: "Student Union explains recent proposal",
+        id: "event-005",
+        title: "校發會110學年度第5次會議：未來機車將不由長興街進出校園",
       },
     ],
     comments: [],
   },
   {
     id: "issue-003",
-    title: "Campus Counseling Resource Expansion",
+    title: "於2028年達成校園無車化",
     aiSummary:
       "AI summary placeholder: This issue is about improving student counseling and mental health support resources on campus.",
     timeline: [

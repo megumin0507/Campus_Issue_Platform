@@ -17,14 +17,14 @@ const issuesOverview: IssueOverviewItem[] = [
   },
   {
     id: "issue-002",
-    title: "Student Club Regulation Revision",
-    startDate: "2025-12-08",
+    title: "對於興建學生宿舍而增長之長興街校門口交通流量",
+    startDate: "2022-04-27",
     endDate: null,
   },
   {
     id: "issue-003",
-    title: "Campus Counseling Resource Expansion",
-    startDate: "2025-12-08",
+    title: "於2028年達成校園無車化",
+    startDate: "2022-5-28",
     endDate: null,
   },
   {
