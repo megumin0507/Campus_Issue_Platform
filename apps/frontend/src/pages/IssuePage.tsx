@@ -256,9 +256,13 @@ export default function IssuePage() {
 const styles: Record<string, CSSProperties> = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#f3f4f6",
+    backgroundImage: "url('/background.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
     padding: "24px",
-    fontFamily: "Arial, Helvetica, sans-serif",
+    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
     boxSizing: "border-box",
   },
 
@@ -270,22 +274,23 @@ const styles: Record<string, CSSProperties> = {
   backLink: {
     display: "inline-block",
     marginBottom: "16px",
-    color: "#111827",
+    color: "#553312",
     textDecoration: "none",
     fontWeight: 700,
   },
 
   card: {
-    backgroundColor: "#ffffff",
-    border: "3px solid #111827",
-    padding: "20px",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    border: "2px solid #633d19",
+    borderRadius: "12px",
+    padding: "24px 28px",
     marginBottom: "16px",
     boxSizing: "border-box",
   },
 
   label: {
     margin: "0 0 8px",
-    color: "#6b7280",
+    color: "#7a5d41",
     fontWeight: 700,
     textTransform: "uppercase",
   },
@@ -293,17 +298,20 @@ const styles: Record<string, CSSProperties> = {
   title: {
     margin: 0,
     fontSize: "32px",
+    color: "#553312",
   },
 
   sectionTitle: {
     margin: "0 0 12px",
     fontSize: "22px",
+    color: "#7a5d41",
   },
 
   paragraph: {
     margin: 0,
     fontSize: "16px",
     lineHeight: 1.6,
+    color: "#633d19",
   },
 
   timeline: {
@@ -316,24 +324,26 @@ const styles: Record<string, CSSProperties> = {
     display: "grid",
     gridTemplateColumns: "130px 1fr",
     gap: "16px",
-    border: "2px solid #111827",
-    backgroundColor: "#f9fafb",
+    border: "2px solid #633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: "12px",
     padding: "14px",
   },
 
   timelineDate: {
     fontWeight: 700,
-    color: "#2563eb",
+    color: "#553312",
   },
 
   timelineContent: {
-    borderLeft: "3px solid #111827",
+    borderLeft: "2px solid #633d19",
     paddingLeft: "14px",
   },
 
   timelineTitle: {
     margin: "0 0 8px",
     fontSize: "18px",
+    color: "#553312",
   },
 
   relatedEventList: {
@@ -344,10 +354,11 @@ const styles: Record<string, CSSProperties> = {
 
   linkBox: {
     display: "block",
-    border: "2px solid #111827",
-    backgroundColor: "#dbeafe",
+    border: "2px solid #633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: "12px",
     padding: "14px",
-    color: "#111827",
+    color: "#553312",
     textDecoration: "none",
     fontWeight: 700,
   },
@@ -360,25 +371,31 @@ const styles: Record<string, CSSProperties> = {
   },
 
   commentItem: {
-    border: "2px solid #111827",
-    backgroundColor: "#f9fafb",
+    border: "2px solid #633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: "12px",
     padding: "12px",
+    color: "#553312",
   },
 
   commentText: {
     margin: "6px 0 0",
+    color: "#633d19",
   },
 
   mutedText: {
-    color: "#6b7280",
+    color: "#7a5d41",
   },
 
   commentEditor: {
     width: "100%",
     minHeight: "80px",
-    border: "2px solid #111827",
+    border: "2px solid #633d19",
+    borderRadius: "12px",
     padding: "12px",
     boxSizing: "border-box",
     resize: "vertical",
+    color: "#633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
   },
 };

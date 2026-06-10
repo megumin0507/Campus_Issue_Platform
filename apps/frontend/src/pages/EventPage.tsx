@@ -198,7 +198,12 @@ function EventPageTemplate({ event }: { event: EventDetail }) {
 
           <p style={styles.paragraph}>
             <strong>URL:</strong>{" "}
-            <a href={event.sourceUrl} target="_blank" rel="noreferrer">
+            <a
+              href={event.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={styles.link}
+            >
               {event.sourceUrl}
             </a>
           </p>
@@ -265,9 +270,13 @@ export default function EventPage() {
 const styles: Record<string, CSSProperties> = {
   page: {
     minHeight: "100vh",
-    backgroundColor: "#f3f4f6",
+    backgroundImage: "url('/background.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
     padding: "24px",
-    fontFamily: "Arial, Helvetica, sans-serif",
+    fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
     boxSizing: "border-box",
   },
 
@@ -279,22 +288,23 @@ const styles: Record<string, CSSProperties> = {
   backLink: {
     display: "inline-block",
     marginBottom: "16px",
-    color: "#111827",
+    color: "#553312",
     textDecoration: "none",
     fontWeight: 700,
   },
 
   card: {
-    backgroundColor: "#ffffff",
-    border: "3px solid #111827",
-    padding: "20px",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    border: "2px solid #633d19",
+    borderRadius: "12px",
+    padding: "24px 28px",
     marginBottom: "16px",
     boxSizing: "border-box",
   },
 
   label: {
     margin: "0 0 8px",
-    color: "#6b7280",
+    color: "#7a5d41",
     fontWeight: 700,
     textTransform: "uppercase",
   },
@@ -302,25 +312,35 @@ const styles: Record<string, CSSProperties> = {
   title: {
     margin: 0,
     fontSize: "32px",
+    color: "#553312",
   },
 
   sectionTitle: {
     margin: "0 0 12px",
     fontSize: "22px",
+    color: "#7a5d41",
   },
 
   paragraph: {
     margin: "0 0 8px",
     fontSize: "16px",
     lineHeight: 1.6,
+    color: "#633d19",
+  },
+
+  link: {
+    color: "#0967c8",
+    textDecoration: "underline",
+    wordBreak: "break-all",
   },
 
   linkBox: {
     display: "block",
-    border: "2px solid #111827",
-    backgroundColor: "#fef3c7",
+    border: "2px solid #633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: "12px",
     padding: "14px",
-    color: "#111827",
+    color: "#553312",
     textDecoration: "none",
     fontWeight: 700,
   },
@@ -333,26 +353,32 @@ const styles: Record<string, CSSProperties> = {
   },
 
   commentItem: {
-    border: "2px solid #111827",
-    backgroundColor: "#f9fafb",
+    border: "2px solid #633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: "12px",
     padding: "12px",
+    color: "#553312",
   },
 
   commentText: {
     margin: "6px 0 0",
+    color: "#633d19",
   },
 
   mutedText: {
-    color: "#6b7280",
+    color: "#7a5d41",
   },
 
   commentEditor: {
     width: "100%",
     minHeight: "80px",
-    border: "2px solid #111827",
+    border: "2px solid #633d19",
+    borderRadius: "12px",
     padding: "12px",
     boxSizing: "border-box",
     resize: "vertical",
+    color: "#633d19",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
   },
 
   titleRow: {
@@ -366,7 +392,7 @@ const styles: Record<string, CSSProperties> = {
     margin: 0,
     minWidth: "160px",
     textAlign: "right",
-    color: "#6b7280",
+    color: "#7a5d41",
     fontWeight: 700,
     fontSize: "14px",
   },

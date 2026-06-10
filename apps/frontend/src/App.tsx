@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import type { CSSProperties, MouseEvent as ReactMouseEvent } from "react";
 
 import HomePage from "./pages/HomePage"
 import EventPage from "./pages/EventPage"
@@ -15,20 +16,70 @@ function Navbar() {
     window.location.href = "/";
   }
 
+  const navLinkStyle: CSSProperties = {
+    color: "#553312",
+    textDecoration: "none",
+    fontWeight: 600,
+  };
+
+  const handleEnter = (e: ReactMouseEvent<HTMLElement>) => {
+    e.currentTarget.style.color = "#331c06";
+  };
+  const handleLeave = (e: ReactMouseEvent<HTMLElement>) => {
+    e.currentTarget.style.color = "#553312";
+  };
+
   return (
-    <nav style={{ padding: "16px", borderBottom: "1px solid #ddd" }}>
-      <Link to="/" style={{ marginRight: "16px" }}>
+    <nav
+      style={{
+        padding: "16px",
+        borderBottom: "1px solid #633d19",
+        fontFamily: "'Noto Serif TC', Arial, Helvetica, sans-serif",
+      }}
+    >
+      <Link
+        to="/"
+        style={{ ...navLinkStyle, marginRight: "16px" }}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
         首頁
       </Link>
 
       {token ? (
-        <button onClick={logout}>登出</button>
+        <button
+          onClick={logout}
+          style={{
+            ...navLinkStyle,
+            background: "transparent",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+            fontSize: "inherit",
+          }}
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
+        >
+          登出
+        </button>
       ) : (
         <>
-          <Link to="/login" style={{ marginRight: "16px" }}>
+          <Link
+            to="/login"
+            style={{ ...navLinkStyle, marginRight: "16px" }}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+          >
             登入
           </Link>
-          <Link to="/register">註冊</Link>
+          <Link
+            to="/register"
+            style={navLinkStyle}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+          >
+            註冊
+          </Link>
         </>
       )}
     </nav>
