@@ -71,16 +71,39 @@ const pseudoIssues: IssueDetail[] = [
     timeline: [
       {
         id: "timeline-003",
-        date: "2025-12-08",
-        title: "Student club regulation revision discussed",
+        date: "2022-11-11",
+        title: "邀集校內相關單位 學府里及工務局 交通觸及台北市自來水事業處等單位會勘",
         description:
-          "A proposed revision related to student organizations and clubs was discussed in a meeting.",
+          "未來舟山路底開口採經與會單位原則同意，以老師使用方便及安全管理為原則。",
       },
+      {
+        id: "timeline-004",
+        date: "2023-03-14",
+        title: "短期工程－機車破口：舟山路底（基隆路三段30巷）開闢機車出入口工程規劃設計",
+        description:
+          "A112年03月14日~113年2月5日進行「舟山路底(基隆路三段30巷)開闢機車出入口工程」規劃設計至工程完工。",
+      },
+      {
+        id: "timeline-05",
+        date: "2026-04-08",
+        title: "明達館側戶外環境改善工程基本設計",
+        description:
+          "長興街為校園內重要之東側通學動線與交通節點，設計出最完善動線其中包含一．自行車道拓寬 二．動線調整及部分圍牆拆除 三．明達館機車停車格及中庭景觀 四．舟山路自行車穿線規劃及路緣線型調整。",
+      },
+      
     ],
     relatedEvents: [
       {
         id: "event-005",
         title: "校發會110學年度第5次會議：未來機車將不由長興街進出校園",
+      },
+      {
+        id: "event-007",
+        title: "短期工程－機車破口：舟山路底（基隆路三段30巷）開闢機車出入口工程規劃設計",
+      },
+      {
+        id: "event-008",
+        title: "長興街校門口拓寬工程",
       },
     ],
     comments: [],
@@ -89,42 +112,60 @@ const pseudoIssues: IssueDetail[] = [
     id: "issue-003",
     title: "於2028年達成校園無車化",
     aiSummary:
-      "AI summary placeholder: This issue is about improving student counseling and mental health support resources on campus.",
+      "本計畫擬針對本校（校總區基隆路以北區域）校園無車化之進程規劃：除送貨車、救護車、計程車等特定服務性車輛和幼兒園家長接送車輛得以進入校園，循規劃之路線至餐廳、實驗室、幼兒園等場館，其他車輛皆須停放於外圍停車場，不進入校園。",
     timeline: [
       {
         id: "timeline-004",
-        date: "2025-12-08",
-        title: "Counseling resource discussion appears in meeting",
+        date: "2022-05-28",
+        title: "110學年度第二學期第二次校務會議",
         description:
-          "The meeting included student support and counseling-related reports.",
+          "學生會張承語同學提案，盡速於111年8月起，開始校園無汽車之時程擬訂，最晚須於2032年前，達成校園內非服務性機動汽車之校園規劃目標",
+      },
+      {
+        id: "timeline-005",
+        date: "2024-11-29",
+        title: "校總區無車化執行方案與推動時程整體規劃全校公聽會",
+        description:
+          "於公聽會搜集各方意見與討論國外執行案例，包含校園車速、動線地下化、同時必須確保身心障礙者交通方便性。",
       },
     ],
     relatedEvents: [
       {
         id: "event-003",
-        title: "Campus counseling resource discussion announced",
+        title: "校總區無車化執行方案與推動時程整體規劃全校公聽會",
       },
     ],
     comments: [],
   },
   {
     id: "issue-004",
-    title: "Course Selection System Feedback",
+    title: "分數膨脹因應方案",
     aiSummary:
-      "AI summary placeholder: This issue collects student concerns about course selection, including fairness, usability, and information transparency.",
+      "分數膨脹議題對內不僅加劇分數競爭、不利彰顯卓越，對外也使得分數貶值，降低國外大學對台大分數的信賴度，為因應提出七項措施與長期目標",
     timeline: [
       {
-        id: "timeline-005",
-        date: "2025-12-20",
-        title: "Students report course selection problems",
+        id: "timeline-006",
+        date: "2024-05-31",
+        title: "112學年度第二學期第二次教務會議",
         description:
-          "Students raised concerns about course availability and system usability.",
+          "於此會議討論分數膨脹現象，提出他校參考策略與台大可能應對方法",
+      },
+      {
+        id: "timeline-007",
+        date: "2025-03-31",
+        title: "全校師生座談會",
+        description:
+          "於此會議回應學生會問卷調查結果，提出處理此議題的必要性。",
       },
     ],
     relatedEvents: [
       {
-        id: "event-004",
-        title: "Course selection feedback collected",
+        id: "event-010",
+        title: "112學年度第二學期第二次教務會議",
+      },
+      {
+        id: "event-011",
+        title: "分數膨脹因應方案-學生座談會",
       },
     ],
     comments: [],

@@ -36,11 +36,11 @@ const issuesOverview: IssueOverviewItem[] = [
   },
   {
     id: "issue-004",
-    title: "Course Selection System Feedback",
-    startDate: "2025-12-20",
-    endDate: "2026-01-15",
+    title: "分數膨脹因應對策",
+    startDate: "2024-05-31",
+    endDate: null,
     summary:
-      "Students report frequent timeouts and confusing waitlist behavior during peak selection windows. Feedback calls for a clearer queue display, fairer allocation rules, and load-tested infrastructure ahead of the next enrollment cycle.",
+      "分數膨漲對內加劇分數競爭，影響修課規劃，對外也降低台大分數的信賴度，對此議題進行校內、與聯合校外討論",
   },
   {
     id: "issue-005",
