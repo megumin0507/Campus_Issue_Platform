@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import type { CSSProperties } from "react";
+import CommentsSection from "../components/CommentsSection";
 
 type TimelineItem = {
   id: string;
@@ -244,28 +245,7 @@ function IssuePageTemplate({ issue }: { issue: IssueDetail }) {
           </div>
         </section>
 
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>Comments</h2>
-
-          {issue.comments.length > 0 ? (
-            <div style={styles.commentList}>
-              {issue.comments.map((comment) => (
-                <div key={comment.id} style={styles.commentItem}>
-                  <strong>{comment.author}</strong>
-                  <p style={styles.commentText}>{comment.content}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p style={styles.mutedText}>No comments yet.</p>
-          )}
-
-          <textarea
-            style={styles.commentEditor}
-            placeholder="Comment function will be implemented later."
-            disabled
-          />
-        </section>
+        <CommentsSection threadId={issue.id} />
       </section>
     </main>
   );
@@ -438,5 +418,57 @@ const styles: Record<string, CSSProperties> = {
     resize: "vertical",
     color: "#633d19",
     backgroundColor: "rgba(255, 255, 255, 0.7)",
+  },
+
+  replyList: {
+    marginLeft: "32px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    marginBottom: "4px",
+  },
+
+  replyItem: {
+    border: "1.5px solid #b08060",
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    borderRadius: "10px",
+    padding: "10px 12px",
+    color: "#553312",
+  },
+
+  replyEditor: {
+    marginLeft: "32px",
+    marginTop: "8px",
+    marginBottom: "8px",
+  },
+
+  replyBtn: {
+    marginTop: "6px",
+    background: "none",
+    border: "none",
+    color: "#7a5d41",
+    cursor: "pointer",
+    fontSize: "13px",
+    padding: 0,
+    textDecoration: "underline",
+  },
+
+  submitBtn: {
+    backgroundColor: "#633d19",
+    color: "#fff",
+    border: "none",
+    borderRadius: "8px",
+    padding: "8px 18px",
+    cursor: "pointer",
+    fontWeight: 700,
+  },
+
+  cancelBtn: {
+    backgroundColor: "transparent",
+    color: "#7a5d41",
+    border: "1.5px solid #b08060",
+    borderRadius: "8px",
+    padding: "8px 14px",
+    cursor: "pointer",
   },
 };

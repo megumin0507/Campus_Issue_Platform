@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import type { CSSProperties } from "react";
+import CommentsSection from "../components/CommentsSection";
 
 type CommentPreview = {
   id: string;
@@ -49,10 +50,10 @@ const pseudoEvents: EventDetail[] = [
   },
   {
     id: "event-002",
-    title: "Student Union explains recent proposal",
-    time: "2025-12-08",
+    title: "學生會學權部發布聲明",
+    time: "2025-08-08",
     content:
-      "The Student Union posted an explanation about a recent student affairs proposal and invited students to give feedback.",
+      "學生會公開譴責並提出三項訴求，並持續監督事件後續進展。",
     sourceOrganization: "NTU Student Union",
     sourceUrl: "https://www.instagram.com/ntusa.taiwan",
     relatedIssue: {
@@ -193,6 +194,20 @@ const pseudoEvents: EventDetail[] = [
     },
     comments: [],
   },
+  {
+    id: "event-012",
+    title: "移民署公開發文",
+    time: "2025-08-08",
+    content:
+      "於8月8日上午與臺灣大學主任秘書王大銘、校方人員及學生會代表進行溝通並達成共識，移民署對於本案未事先通報校方深表歉意，並承諾將落實通報及協調機制，強化與各級學校之溝通聯繫，確保執法同時兼顧校園自主、師生權益與公共安全。",
+    sourceOrganization: "內政部移民署",
+    sourceUrl: "https://www.immigration.gov.tw/5385/7229/7238/395572/cp_news",
+    relatedIssue: {
+      id: "issue-001",
+      title: "台大校園突現便衣執法人員無預警抓人",
+    },
+    comments: [],
+  },
 ];
 
 function EventPageTemplate({ event }: { event: EventDetail }) {
@@ -245,28 +260,7 @@ function EventPageTemplate({ event }: { event: EventDetail }) {
           </Link>
         </section>
 
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>Comments</h2>
-
-          {event.comments.length > 0 ? (
-            <div style={styles.commentList}>
-              {event.comments.map((comment) => (
-                <div key={comment.id} style={styles.commentItem}>
-                  <strong>{comment.author}</strong>
-                  <p style={styles.commentText}>{comment.content}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p style={styles.mutedText}>No comments yet.</p>
-          )}
-
-          <textarea
-            style={styles.commentEditor}
-            placeholder="Comment function will be implemented later."
-            disabled
-          />
-        </section>
+        <CommentsSection threadId={event.id} />
       </section>
     </main>
   );
